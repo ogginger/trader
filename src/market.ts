@@ -1,6 +1,5 @@
 import fetch from "isomorphic-fetch"
 
-
 function escapeRegExp( input: string ) {
     return input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
@@ -88,7 +87,8 @@ export default class Market {
         });
         if ( response.status == 200 ) {
             let json = await response.json();
-            return json;
+            let quote = json[symbol];
+            return quote;
         } else {
             throw new Error("Failed to return quote.");
         }
@@ -180,4 +180,21 @@ export default class Market {
     }
 }
 
-export const buy_tests: any = [{}];
+export function tests( marketConfig: MarketConfig ) {
+    return [{
+        name: "Market.getQuote_AAPL_returnsQuote",
+        context: async function() {
+            let market = new Market( marketConfig );
+            await market.authenticate();
+            return market;
+        },
+        input: ["AAPL"],
+        function: async function( ticker: string ) {
+            let market = this;
+            let quote = await market.getQuote( ticker );
+            return quote.symbol == ticker;
+        },
+        output: true,
+        debug: true
+    }];    
+}
