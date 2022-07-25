@@ -1,0 +1,21 @@
+{
+  "name": "trader",
+  "version": "1.0.0",
+  "description": "Empty typescript project for quick-starting development.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "og.ginger@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "isomorphic-fetch": "^3.0.0",
+    "lodash": "^4.17.21",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "@types/isomorphic-fetch": "^0.0.36",
+    "@types/lodash": "^4.14.182",
+    "@types/node": "^18.6.0"
+  }
+}
